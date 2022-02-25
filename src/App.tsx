@@ -1,18 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { findUserById } from './api/user.service';
 import User from './components/User';
 import { IUser } from './interfaces/user.interface';
 
 function App() {
 
-  const user: IUser = {
-    id: 1,
-    name: 'John',
-    email: 'jhon@genium.io'
-  }
+  const [user, setUser] = React.useState<IUser | null>(null);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await findUserById(1);
+      setUser(user);
+    }
+    fetchUser();
+  }, []);
 
   return (
     <div className="App">
-      <User user={user} onChange={(v) => { console.log(v) }} />
+      {
+        user && <User user={user} onChange={(v) => { console.log(v) }} />
+      }
     </div>
   );
 }

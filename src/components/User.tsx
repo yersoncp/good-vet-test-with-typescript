@@ -7,11 +7,11 @@ type IProps = {
     onChange: (value: IUser) => void,
 }
 
-const SearchFilter: FC<IProps> = ({ onChange, user }) => {
+const User: FC<IProps> = ({ onChange, user }) => {
     return <>
         <h2>Hello {user?.name}</h2>
         <button onClick={() => onChange(user)}>Change</button>
     </>
 }
 
-export default SearchFilter
+export default User
