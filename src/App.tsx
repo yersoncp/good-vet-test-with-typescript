@@ -1,24 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import User from './components/User';
+import { IUser } from './interfaces/user.interface';
 
 function App() {
+
+  const user: IUser = {
+    id: 1,
+    name: 'John',
+    email: 'jhon@genium.io'
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <User user={user} onChange={(v) => { console.log(v) }} />
     </div>
   );
 }
